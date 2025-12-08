@@ -5,11 +5,21 @@ tags:
 
 
 
-# 2025-12-08 Besprechungsnotizen
+# Testseite
 
 ## \uD83D\uDDD3 Datum
 
 2025-12-08
+
+## Wie starte ich Comarch?
+
+1. Drücke die Windows-Taste auf deiner Tastatur
+2. ![image-20251208-161717.png](../attachments/29d9890e-cc05-4f76-b0a0-df44b47354ca.png)
+
+   Suche im Dialog nach `Comarch`
+
+> [!WARNING]
+> Achte darauf, dass du die richtige Umgebung (PROD / TEST) öffnest
 
 ## \uD83D\uDC65 Teilnehmer
 
