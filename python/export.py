@@ -49,7 +49,7 @@ async def interactive_login_and_save_cookies():
             await browser.close()
             return
 
-        await asyncio.sleep(3)
+        await asyncio.sleep(1)
 
         # Save cookies
         cookies = await context.cookies()
@@ -58,7 +58,6 @@ async def interactive_login_and_save_cookies():
         print(f"\nCookies saved to {COOKIES_FILE}")
         print("You can now close the browser window.")
 
-        await asyncio.sleep(5)
         await browser.close()
 
 async def export_pdf_with_playwright():
@@ -94,8 +93,8 @@ async def export_pdf_with_playwright():
 
         print("Page loaded successfully!")
 
-        # Wait for content to fully render
-        await asyncio.sleep(2)
+        # Wait for content to fully render - use a faster wait
+        await page.wait_for_load_state("domcontentloaded")
 
         # Click on the "Weitere Aktionen" (More actions) button at top right
         print("Clicking 'Weitere Aktionen' menu...")
@@ -125,7 +124,6 @@ async def export_pdf_with_playwright():
                 # Fallback: just try the last one
                 await more_buttons.last.click(force=True)
 
-            await asyncio.sleep(1)
             print("Menu opened!")
 
             # Now click on "Exportieren" (Export)
@@ -134,7 +132,6 @@ async def export_pdf_with_playwright():
             export_option = page.locator('text="Exportieren"').first
             await export_option.wait_for(state="visible", timeout=5000)
             await export_option.click()
-            await asyncio.sleep(1)
             print("Clicked Exportieren!")
 
             # Now a submenu should appear with export format options
@@ -169,7 +166,6 @@ async def export_pdf_with_playwright():
 
             # Wait for navigation to the PDF generation page
             await page.wait_for_load_state("load")
-            await asyncio.sleep(2)
             print(f"Navigated to: {page.url}")
 
             # Wait for the "Download PDF" button to appear (Confluence is generating the PDF)
